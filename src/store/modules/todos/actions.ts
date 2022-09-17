@@ -1,4 +1,7 @@
+import { ActionTree, ActionContext } from "vuex";
 import axios from "axios";
+import { State } from "./type";
+import { RootState } from "@/store/type";
 
 // now here we will going to make an action that will going to make a request on endpoint and get the response and the we will mutate that data
 const actions = {
