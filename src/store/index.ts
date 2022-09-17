@@ -1,8 +1,7 @@
 // Entry point to Vuex
 
-import Vuex from "vuex";
-import Vue from "vue";
-import todos from "./todos";
+import Vuex, { createStore } from "vuex";
+import todos from "./modules/todos";
 
 // Load Vuex
 export default new Vuex.Store({
@@ -11,3 +10,9 @@ export default new Vuex.Store({
     todos,
   },
 });
+
+// export default createStore({
+//   modules: {
+//     todos,
+//   },
+// });
