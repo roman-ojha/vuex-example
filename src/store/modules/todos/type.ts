@@ -22,4 +22,8 @@ export enum TodosMutationType {
   REMOVE_TODO = "REMOVE_TODO",
 }
 
-// export type Mutation<S = State> = {};
+export type Mutation<S = State> = {
+  [TodosMutationType.SET_TODOS](state: S, payload: Todo[]): Todo[];
+  [TodosMutationType.NEW_TODO](state: S, payload: Todo): number;
+  [TodosMutationType.REMOVE_TODO](state: S, payload: number): Todo[];
+};
