@@ -13,7 +13,7 @@ const actions = {
     commit("setTodos", response.data);
     // commit('<name_of_mutation_you_want_to_call>',<new_data>)
   },
-  async addTodo({ commit }: { commit: any }, title: any) {
+  async addTodo({ commit }: { commit: any }, title: string) {
     // now while calling this action we will pass the title as data to add todo
 
     const response = await axios.post(
@@ -24,6 +24,12 @@ const actions = {
       }
     );
     commit("newTodo", response.data);
+  },
+  async deleteTodo({ commit }: { commit: any }, id: string) {
+    // let's say that this will delete from the server
+    await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+
+    commit("removeTodo", id);
   },
 };
 

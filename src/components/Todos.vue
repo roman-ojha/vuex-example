@@ -5,7 +5,10 @@
       <!-- now here we will display all the todos getting from getters -->
       <div v-for="todo in allTodos" :key="todo.id" class="todo">
         {{ todo.title }}
-        <iconify-icon icon="ant-design:delete-filled"></iconify-icon>
+        <iconify-icon
+          @click="deleteTodo(todo.id)"
+          icon="ant-design:delete-filled"
+        ></iconify-icon>
       </div>
     </div>
   </div>
@@ -26,7 +29,7 @@ export default defineComponent({
   },
   // to perform vuex action we need a method for that
   methods: {
-    ...mapActions(["fetchTodos"]),
+    ...mapActions(["fetchTodos", "deleteTodo"]),
   },
   created() {
     // now we want to call the 'fetchTodos' action after component get mounted
