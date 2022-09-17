@@ -13,6 +13,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
+import { useStore } from "@/store";
+import { TodosActionType } from "@/store/modules/todos/types";
+
+const store = useStore();
+
 export default defineComponent({
   name: "AddTodos",
   data() {
@@ -21,11 +26,16 @@ export default defineComponent({
     };
   },
   methods: {
-    ...mapActions(["addTodo"]),
-    onSubmit(e: any) {
+    // one way to access action methods
+    // ...mapActions(["addTodo"]),
+    async onSubmit(e: any) {
       e.preventDefault();
       // now here we will call the action function and pass new todo title
-      this.addTodo(this.title);
+      // using 'mapActions'
+      // this.addTodo(this.title);
+
+      // other way to access action method using dispatch
+      await store.dispatch(TodosActionType.ADD_TODO, this.title);
     },
   },
 });

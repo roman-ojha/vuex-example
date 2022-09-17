@@ -20,16 +20,35 @@ import { mapGetters, mapActions } from "vuex";
 // this will get the map Getter from the vuex
 // and also to perform some action into the vuex we need 'mapActions'
 
+import { useStore } from "@/store";
+import { TodosActionType, TodoGettersType } from "@/store/modules/todos/types";
+const store = useStore();
+
 export default defineComponent({
   name: "Todos",
   computed: {
-    ...mapGetters(["allTodos"]),
     // now we will implement the mapGetter into computed property
     // and we will pass the array of getter that we want to use
+    // ...mapGetters(["ALL_TODO"]),
+    // call getter function using 'mapGetters'
+
+    // call getter function with another way
+    allTodos() {
+      return store.getters["ALL_TODO"];
+    },
   },
   // to perform vuex action we need a method for that
   methods: {
-    ...mapActions(["fetchTodos", "deleteTodo"]),
+    // one way to access action methods
+    // ...mapActions(["fetchTodos", "deleteTodo"]),
+
+    async fetchTodos() {
+      // other way to access action method using dispatch
+      await store.dispatch(TodosActionType.FETCH_TODOS, undefined);
+    },
+    async deleteTodo(id: number) {
+      await store.dispatch(TodosActionType.DELETE_TODO, id);
+    },
   },
   created() {
     // now we want to call the 'fetchTodos' action after component get mounted
