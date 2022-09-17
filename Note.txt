@@ -19,3 +19,6 @@
 
 *) Modules:
     -> Each module can have it's own state, getters, actions & mutations (posts module, auth module, etc)
+
+=> About this project:
+    -> https://jsonplaceholder.typicode.com/todos
