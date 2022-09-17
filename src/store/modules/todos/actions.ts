@@ -13,6 +13,18 @@ const actions = {
     commit("setTodos", response.data);
     // commit('<name_of_mutation_you_want_to_call>',<new_data>)
   },
+  async addTodo({ commit }: { commit: any }, title: any) {
+    // now while calling this action we will pass the title as data to add todo
+
+    const response = await axios.post(
+      "https://jsonplaceholder.typicode.com/todos",
+      {
+        title,
+        completed: false,
+      }
+    );
+    commit("newTodo", response.data);
+  },
 };
 
 export default actions;

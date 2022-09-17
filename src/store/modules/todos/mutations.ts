@@ -5,6 +5,7 @@ const mutations = {
     return (state.todos = todos);
     // and we will return the new state
   },
+  newTodo: (state: any, todo: any) => state.todos.unshift(todo),
 };
 
 export default mutations;

@@ -5,6 +5,7 @@
       <!-- now here we will display all the todos getting from getters -->
       <div v-for="todo in allTodos" :key="todo.id" class="todo">
         {{ todo.title }}
+        <iconify-icon icon="ant-design:delete-filled"></iconify-icon>
       </div>
     </div>
   </div>
@@ -49,12 +50,13 @@ export default defineComponent({
   position: relative;
   cursor: pointer;
 }
-i {
+iconify-icon {
   position: absolute;
   bottom: 10px;
   right: 10px;
   color: #fff;
   cursor: pointer;
+  font-size: 20px;
 }
 .legend {
   display: flex;
