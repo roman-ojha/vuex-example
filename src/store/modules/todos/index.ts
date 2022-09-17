@@ -1,7 +1,6 @@
-import axios from "axios";
 import actions from "./actions";
 import getters from "./getters";
-import mutation from "./mutation";
+import mutations from "./mutations";
 import state from "./state";
 
 export default {
@@ -9,5 +8,5 @@ export default {
   state,
   getters,
   actions,
-  mutation,
+  mutations,
 };

@@ -1,6 +1,6 @@
 const state = {
   // now this is the state or the data of the todo
-  todo: [
+  todos: [
     {
       id: 1,
       title: "One",
