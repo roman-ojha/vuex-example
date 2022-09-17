@@ -23,8 +23,8 @@ export enum TodoGettersType {
 }
 
 export interface Getters {
-  // allTodos(state: State): Todo[];
-  [TodoGettersType.ALL_TODO](state: State): Todo[];
+  allTodos(state: State): Todo[];
+  // [TodoGettersType.ALL_TODO](state: State): Todo[];
 }
 
 export enum TodosActionType {
@@ -66,6 +66,7 @@ export type Mutations<S = State> = {
   [TodosMutationType.REMOVE_TODO](state: S, payload: number): Todo[];
 };
 
+// we define this store so that we can be able to use this on vue component to call 'commit', 'dispatch', 'getters' function
 export type TodosStore<S = State> = Omit<
   VuexStore<S>,
   "getters" | "commit" | "dispatch"

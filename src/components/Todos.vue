@@ -9,6 +9,10 @@
           @click="deleteTodo(todo.id)"
           icon="ant-design:delete-filled"
         ></iconify-icon>
+        <!-- <iconify-icon
+          @click="callCommitFunction(todo.id)"
+          icon="ant-design:delete-filled"
+        ></iconify-icon> -->
       </div>
     </div>
   </div>
@@ -21,7 +25,11 @@ import { mapGetters, mapActions } from "vuex";
 // and also to perform some action into the vuex we need 'mapActions'
 
 import { useStore } from "@/store";
-import { TodosActionType, TodoGettersType } from "@/store/modules/todos/types";
+import {
+  TodosActionType,
+  TodoGettersType,
+  TodosMutationType,
+} from "@/store/modules/todos/types";
 const store = useStore();
 
 export default defineComponent({
@@ -34,7 +42,7 @@ export default defineComponent({
 
     // call getter function with another way
     allTodos() {
-      return store.getters["ALL_TODO"];
+      return store.getters["allTodos"];
     },
   },
   // to perform vuex action we need a method for that
@@ -48,6 +56,11 @@ export default defineComponent({
     },
     async deleteTodo(id: number) {
       await store.dispatch(TodosActionType.DELETE_TODO, id);
+    },
+
+    // and also we can directly access commit function which will change the state
+    callCommitFunction(id: number) {
+      store.commit(TodosMutationType.REMOVE_TODO, id);
     },
   },
   created() {
@@ -79,27 +92,6 @@ iconify-icon {
   color: #fff;
   cursor: pointer;
   font-size: 20px;
-}
-.legend {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
-.complete-box {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: #35495e;
-}
-.incomplete-box {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: #41b883;
-}
-.is-complete {
-  background: #35495e;
-  color: #fff;
 }
 @media (max-width: 500px) {
   .todos {

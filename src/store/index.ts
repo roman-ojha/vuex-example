@@ -1,11 +1,13 @@
 // Entry point to Vuex
-import Vuex, { createStore } from "vuex";
+import { createLogger, createStore } from "vuex";
 import { store as todos } from "./modules/todos";
 import { Store } from "./types";
 
-// Load Vuex
-
+// plug in logger when in development environment
+const debug = process.env.NODE_ENV !== "production";
+const plugins = debug ? [createLogger({})] : [];
 export const store = createStore({
+  plugins,
   modules: {
     // now here we will pass the list of module here
     todos,
