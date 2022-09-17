@@ -1,4 +1,8 @@
-const getters = {
+import { GetterTree } from "vuex";
+import { RootState } from "@/store/types";
+import { State, Getters } from "./types";
+
+const getters: GetterTree<State, RootState> & Getters = {
   // in order to get the state to vue component we need a getter
   allTodos: (state: any) => {
     // this will get the 'state' and now we can manipulate that state

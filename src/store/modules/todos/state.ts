@@ -1,4 +1,4 @@
-import { State } from "./type";
+import { State } from "./types";
 
 const state: State = {
   // now this is the state or the data of the todo

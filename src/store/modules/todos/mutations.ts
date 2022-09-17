@@ -1,7 +1,7 @@
 import { MutationTree } from "vuex";
-import { State, Mutation, TodosMutationType, Todo } from "./type";
+import { State, Mutations, TodosMutationType, Todo } from "./types";
 
-const mutations: MutationTree<State> & Mutation = {
+const mutations: MutationTree<State> & Mutations = {
   // now after action commit that data we have to do mutation
   [TodosMutationType.SET_TODOS]: function (state: State, todos: Todo[]) {
     // and mutation function will contain the 'state' of the current module and then todo that we commit from the action
