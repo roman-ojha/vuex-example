@@ -1,0 +1,24 @@
+*)  VueX:
+    -> State management & Pattern library
+    -> Centralized store for all components
+    -> components need to share state in many cases Vuex provides a single source of truth for data/state
+    -> No need to pass events up and props down through multiple components
+    -> Global state is 'reactive'
+
+*) State:
+    -> App-level state/data (todo, posts, token, etc)
+
+*) Getters:
+    -> Get pieces of state or computed values from state
+
+*) Actions:
+    -> Called from components to commit a mutation
+
+*) Mutations:
+    -> Mutate the state (update data, etc)
+
+*) Modules:
+    -> Each module can have it's own state, getters, actions & mutations (posts module, auth module, etc)
+
+=> About this project:
+    -> https://jsonplaceholder.typicode.com/todos
